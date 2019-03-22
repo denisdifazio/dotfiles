@@ -2,7 +2,7 @@
 
 ### Install
 
-Clone and execute init.sh
+Clone to ~/.vim and execute init.sh
 
 ### Font
 
