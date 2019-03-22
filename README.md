@@ -4,6 +4,6 @@
 
 Clone and execute init.sh
 
-### Terminal Font
+### Font
 
 Hack
