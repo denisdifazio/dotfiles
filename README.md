@@ -1,3 +1,9 @@
 # dotfiles
 
-Clone and execute init.sh
+### Install
+
+Clone to ~/.vim and execute init.sh
+
+### Font
+
+Hack
