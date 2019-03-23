@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # get the absolute path of our dotfiles repository
-DIR=$(cd `dirname $0` && pwd)
+DIR=~/.vim
 
 # download and install plug-vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
