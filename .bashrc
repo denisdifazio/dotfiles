@@ -117,8 +117,7 @@ if ! shopt -oq posix; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export PS1="\e[44m\u:\w\e[m\e[34m\$(__git_ps1 '\e[38;5;235;44m\e[37;44m %s \e[m\e[34m')\e[m " 
+export PS1="\e[44m \u \e[38;5;235m\e[37m \w \e[m\e[34m\$(__git_ps1 '\e[38;5;235;44m\e[37;44m  %s \e[m\e[34m')\e[m " 
 
 #source ~/git-prompt.sh
 #export PROMPT_COMMAND='__posh_git_ps1 "\e[44m\u:\w\e[m\e[34m\e[m" " ";'$PROMPT_COMMAND
-
