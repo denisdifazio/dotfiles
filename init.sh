@@ -11,6 +11,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ln -sf $DIR/.bashrc ~/.bashrc
 ln -sf $DIR/.inputrc ~/.inputrc
 ln -sf $DIR/.tmux.conf ~/.tmux.conf
+ln -sf $DIR/.profile ~/.profile
 
 # apply the new .bashrc
 . ~/.bashrc
