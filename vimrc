@@ -31,6 +31,8 @@ map <C-p> :Files<CR>
 nnoremap <C-b>\ <C-w>v
 nnoremap <C-b>- <C-w>s
 nnoremap <leader>] <C-]>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
 
 " use <tab> for trigger completion and navigate to next complete item
 function! s:check_back_space() abort
