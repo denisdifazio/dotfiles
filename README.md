@@ -2,7 +2,21 @@
 
 ## Prerequisites
 
-Vim 8.1 - used by CoC extension
+* nodejs >= 8.0
+* yarn 
+* Vim 8.1 - used by CoC extension
+
+### NodeJS
+
+```
+sudo apt install nodejs
+```
+
+### Yarn
+
+```
+curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+```
 
 ### Vim Update
 
