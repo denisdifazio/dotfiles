@@ -118,6 +118,8 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+PROMPT_DIRTRIM=3
+
 user_str=$'\[\e[44m\] \u \[\e[38;5;235m\]'
 pws_str=$'\[\e[37m\]\w \[\e[m\e[34m\]'
 branch_str=$'\[\e[38;5;235;44m\]\[\e[37;44m\]  %s \[\e[m\e[34m\]'
