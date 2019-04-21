@@ -1,6 +1,5 @@
 call plug#begin()
 
-Plug 'scrooloose/nerdtree'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -11,6 +10,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'itchyny/vim-gitbranch'
 Plug 'pangloss/vim-javascript'
+Plug 'janko-m/vim-test'
 
 call plug#end()
 
