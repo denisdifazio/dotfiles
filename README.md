@@ -37,6 +37,8 @@ cd vim
 
 rm src/auto/config.cache # optional - required on the second try
 
+make distclean # optional - required on the second try
+
 ./configure --with-features=huge \
             --enable-multibyte \
             --enable-python3interp \
@@ -45,8 +47,6 @@ rm src/auto/config.cache # optional - required on the second try
             --enable-fail-if-missing \
             --with-x \
             --prefix=/usr/local
-
-make distclean # optional - required on the second try
 
 make
 
