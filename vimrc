@@ -11,6 +11,7 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'itchyny/vim-gitbranch'
 Plug 'pangloss/vim-javascript'
 Plug 'janko-m/vim-test'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
