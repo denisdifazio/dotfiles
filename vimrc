@@ -35,7 +35,6 @@ filetype on
 filetype plugin on
 
 noremap <C-p> :Files<CR>
-nnoremap <leader>] <C-]>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <F8> <Plug>(ale_fix)
