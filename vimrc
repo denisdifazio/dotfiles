@@ -12,12 +12,9 @@ Plug 'itchyny/vim-gitbranch'
 Plug 'pangloss/vim-javascript'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-fugitive'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
-
-hi link jsFuncName PreProc
-hi link jsFuncCall Type
-hi link jsOperatorKeyword Statement
 
 colorscheme gruvbox
 set background=dark
@@ -29,13 +26,15 @@ set updatetime=100
 set nobackup
 set nowritebackup
 set noswapfile
+set cursorline
+set clipboard+=unnamedplus
+set ignorecase
+set smartcase
 
 filetype on
 filetype plugin on
 
-map <C-p> :Files<CR>
-nnoremap <C-b>\ <C-w>v
-nnoremap <C-b>- <C-w>s
+noremap <C-p> :Files<CR>
 nnoremap <leader>] <C-]>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
