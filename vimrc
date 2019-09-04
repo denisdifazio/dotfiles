@@ -60,3 +60,9 @@ let g:lightline = {
       \   'gitbranch': 'gitbranch#name'
       \ },
       \ }
+
+" Only needed beucase of a bug on windows terminal
+" https://github.com/microsoft/terminal/issues/832
+if &term =~ '256color'
+	set t_ut= | set ttyscroll=1
+endif
