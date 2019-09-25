@@ -4,7 +4,6 @@ Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -35,11 +34,14 @@ filetype on
 filetype plugin on
 
 noremap <C-p> :Files<CR>
+
+" coc nvim configuration
+" use <tab> for trigger completion and navigate to next complete item
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <F8> <Plug>(ale_fix)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" use <tab> for trigger completion and navigate to next complete item
 function! s:check_back_space() abort
   let col = col('.') - 1
    return !col || getline('.')[col - 1]  =~ '\s'
@@ -61,8 +63,13 @@ let g:lightline = {
       \ },
       \ }
 
-" Only needed beucase of a bug on windows terminal
-" https://github.com/microsoft/terminal/issues/832
-if &term =~ '256color'
-	set t_ut= | set ttyscroll=1
-endif
+set hidden
+
+set nobackup
+set nowritebackup
+
+set updatetime=300
+
+set shortmess+=c
+
+set signcolumn=yes
