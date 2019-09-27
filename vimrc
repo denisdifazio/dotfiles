@@ -29,6 +29,9 @@ set cursorline
 set clipboard+=unnamedplus
 set ignorecase
 set smartcase
+set shortmess+=c
+set signcolumn=yes
+set hidden
 
 filetype on
 filetype plugin on
@@ -62,14 +65,3 @@ let g:lightline = {
       \   'gitbranch': 'gitbranch#name'
       \ },
       \ }
-
-set hidden
-
-set nobackup
-set nowritebackup
-
-set updatetime=300
-
-set shortmess+=c
-
-set signcolumn=yes
