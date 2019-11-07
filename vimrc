@@ -8,10 +8,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'itchyny/vim-gitbranch'
-Plug 'pangloss/vim-javascript'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-fugitive'
-Plug 'leafgarland/typescript-vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'bkad/camelcasemotion'
 
 call plug#end()
 
@@ -32,6 +33,7 @@ set smartcase
 
 filetype on
 filetype plugin on
+syntax on
 
 noremap <C-p> :Files<CR>
 
