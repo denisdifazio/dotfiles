@@ -41,7 +41,6 @@ syntax on
 noremap <C-p> :Files<CR>
 
 " coc nvim configuration
-" use <tab> for trigger completion and navigate to next complete item
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -52,10 +51,25 @@ function! s:check_back_space() abort
    return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
+" use <tab> for trigger completion and navigate to next complete item
 inoremap <silent><expr> <TAB>
      \ pumvisible() ? "\<C-n>" :
      \ <SID>check_back_space() ? "\<TAB>" :
      \ coc#refresh()
+
+" use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 let g:lightline = {
       \ 'colorscheme': 'wombat',
