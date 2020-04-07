@@ -40,6 +40,8 @@ syntax on
 
 noremap <C-p> :Files<CR>
 
+inoremap <C-c> <ESC>
+
 " coc nvim configuration
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
