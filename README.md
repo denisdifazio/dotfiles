@@ -1,22 +1,16 @@
 # dotfiles
 
+## Windows <-> WSL Clipboard
+
+https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
+
 ## Prerequisites
 
 * nodejs >= 8.0
-* yarn 
-* Vim 8.1 - used by CoC extension
 
 ### NodeJS
 
-```
-sudo apt install nodejs
-```
-
-### Yarn
-
-```
-curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
-```
+Install node with NVM: https://github.com/nvm-sh/nvm
 
 ### Vim Update
 
