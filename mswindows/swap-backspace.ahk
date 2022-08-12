@@ -1,1 +1,2 @@
 Alt::Backspace
+Capslock::LCtrl
