@@ -127,10 +127,10 @@ vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "tsserver" }
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 require("lvim.lsp.manager").setup("tsserver", {
   on_attach = function(client)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.document_formatting = false
+    client.server_capabilities.document_range_formatting = false
 
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.document_formatting then
       vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
     end
   end
