@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+
+set -o nounset
+set -o errexit
+
+VAULT="vault"
+
+while test $# -gt 0; do
+  case "$1" in
+    -h|--help)
+      echo "kb [OPTION] [ARGUMENTS]"
+      echo " "
+      echo "OPTION:"
+      echo "-h, --help                show brief help"
+      echo "add                       add note [TYPE], where TYPE can be daily, weekly, monthly or quarterly"
+      exit 0
+      ;;
+    -v|--version)
+      echo "kb v1.0.0"
+      exit 0
+      ;;
+    --vault)
+      shift
+      if test $# -gt 0; then
+         VAULT=$1
+      else
+        echo "no vault specified"
+        exit 1
+      fi
+      shift
+      ;;
+    add)
+      shift
+      if test $# -gt 0; then
+         NOTE_TYPE=$1
+      else
+        echo "no note type specified"
+        exit 1
+      fi
+      shift
+      ;;
+    *)
+      shift
+      ;;
+  esac
+done
+
+CURRENT_QUARTER=Q$((($(date +%-m)-1)/3+1))
+CURRENT_YEAR=$(date +"%Y")
+CURRENT_MONTH=$(date +"%m")
+CURRENT_WEEK=W$((($(date +%-d)-1)/7+1))
+CURRENT_DAY=$(date +"%d")
+
+if [ "$NOTE_TYPE" = "daily" ] ; then
+  RECENT_NOTE=$(find vault/daily.journal.* | sort -r | head -2 | tail -1)
+  NEW_NOTE="$VAULT/daily.journal.$CURRENT_YEAR.$CURRENT_MONTH.$CURRENT_DAY.md"
+
+  # copy content from old note to new note
+  cp "$RECENT_NOTE" "$NEW_NOTE"
+
+  # update note title
+  sed -i "s/^title.*/title: \"$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DAY\"/" "$NEW_NOTE"
+elif [ "$NOTE_TYPE" = "weekly" ] ; then
+  # create weekly.journal.YYYY.MM.WX.md
+  WEEKLY_FILE="$VAULT/weekly.journal.$CURRENT_YEAR.$CURRENT_MONTH.$CURRENT_WEEK.md"
+
+  touch "$WEEKLY_FILE"
+
+  echo "---" >> $WEEKLY_FILE
+  echo "title: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_WEEK" >> $WEEKLY_FILE
+  echo "---" >> $WEEKLY_FILE
+  echo "" >> $WEEKLY_FILE
+  echo "DONE" >> $WEEKLY_FILE
+  echo "" >> $WEEKLY_FILE
+
+  for i in {0..6}
+  do
+    FILE="$VAULT/daily.journal.$(date -d "$(($i - $(date +%u))) days" +%Y.%m.%d).md"
+    if test -f "$FILE"; then
+      cat $FILE 2>/dev/null | sed -n '/TODO/,/^$/{/^$/q; /TODO/N;p}' | grep '\[x\]' >> $WEEKLY_FILE
+    fi
+  done
+
+  # take all done tasks from dailies
+elif [ "$NOTE_TYPE" = "monthly" ] ; then
+  # criar monthly.journal.YYYY.MM
+  touch "$VAULT/monthly.journal.$CURRENT_YEAR.$CURRENT_MONTH.md"
+  # pegar tudo em summary dos weekly
+elif [ "$NOTE_TYPE" = "quarterly" ] ; then
+  # criar monthly.journal.YYYY.QX
+  touch "$VAULT/quarterly.journal.$CURRENT_YEAR.$CURRENT_QUARTER.md"
+  # pegar tudo em summary dos monthly
+else
+  echo "invalid note type"
+fi
