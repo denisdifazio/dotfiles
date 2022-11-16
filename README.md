@@ -8,6 +8,15 @@ https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-
 
 * nodejs >= 8.0
 
+### Activate CRON in WSL
+
+Create new file `/etc/wsl.conf` and add the following:
+
+```
+[boot]
+command="service cron start"
+```
+
 ### NodeJS
 
 Install node with NVM: https://github.com/nvm-sh/nvm
