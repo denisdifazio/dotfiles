@@ -66,13 +66,6 @@ elif [ "$NOTE_TYPE" = "weekly" ] ; then
 
   touch "$WEEKLY_FILE"
 
-  echo "---" >> "$WEEKLY_FILE"
-  echo "title: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_WEEK" >> "$WEEKLY_FILE"
-  echo "---" >> "$WEEKLY_FILE"
-  echo "" >> "$WEEKLY_FILE"
-  echo "DONE" >> "$WEEKLY_FILE"
-  echo "" >> "$WEEKLY_FILE"
-
   # take all done tasks from dailies
   for i in {0..6}
   do
@@ -81,6 +74,12 @@ elif [ "$NOTE_TYPE" = "weekly" ] ; then
       sed -n '/TODO/,/^$/{/^$/q; /TODO/N;p}' "$FILE" | grep '\[x\]' >> "$WEEKLY_FILE"
     fi
   done
+
+  # remove duplicated lines without sorting
+  awk -i inplace '!seen[$0]++' "$WEEKLY_FILE"
+
+  # add to the begining of file
+  sed -i "1s/^/---\ntitle: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_WEEK\n---\n\nDONE\n\n/" "$WEEKLY_FILE"
 
 elif [ "$NOTE_TYPE" = "monthly" ] ; then
   # create monthly.journal.YYYY.MM
