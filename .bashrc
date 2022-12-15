@@ -20,7 +20,7 @@ elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
 fi
 
 unset env
-		
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -36,7 +36,7 @@ esac
 HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
-#shopt -s histappend
+shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
@@ -139,17 +139,28 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Include FZF fuzzy search on CTRL+R
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-PROMPT_DIRTRIM=3
-
+# Customize display
 user_str=$'\[\e[44m\] \u \[\e[38;5;235m\]'
 pws_str=$'\[\e[37m\]\w \[\e[m\e[34m\]'
 branch_str=$'\[\e[38;5;235;44m\]\[\e[37;44m\]  %s \[\e[m\e[34m\]'
-export PS1="$user_str $pws_str\$(__git_ps1 '$branch_str')\[\e[m\] " 
+export PS1="$user_str $pws_str\$(__git_ps1 '$branch_str')\[\e[m\] "
 
-export FZF_DEFAULT_COMMAND='ag --nocolor --hidden --ignore node_modules --ignore .git -g ""' 
+# Short long paths with ...
+PROMPT_DIRTRIM=3
 
+# set vi-like commands when pressing escape
 set -o vi
 
-stty -ixon
+# fix perl: warning: Setting locale failed.
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+export HOMEBREW_NO_ANALYTICS=1
+
+# set Lombok 
+export JDTLS_JVM_ARGS="-javaagent:$HOME/.local/share/nvim/mason/packages/jdtls/lombok.jar"
+
