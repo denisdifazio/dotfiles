@@ -71,7 +71,7 @@ elif [ "$NOTE_TYPE" = "weekly" ] ; then
   do
     FILE="$VAULT/daily.journal.$(date -d "$((i - $(date +%u))) days" +%Y.%m.%d).md"
     if test -f "$FILE"; then
-      sed -n '/TODO/,/^$/{/^$/q; /TODO/N;p}' "$FILE" | grep '\[x\]' >> "$WEEKLY_FILE"
+      sed -n '/TODO/,/^$/{/^$/q; /TODO/N;p}' "$FILE" | { grep '\[x\]' || true; } >> "$WEEKLY_FILE"
     fi
   done
 
