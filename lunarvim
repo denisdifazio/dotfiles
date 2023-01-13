@@ -28,6 +28,7 @@ lvim.keys.normal_mode["<C-p>"] = "<cmd>lua require('lvim.core.telescope.custom-f
 lvim.keys.normal_mode["[g"] = "<cmd>lua vim.diagnostic.goto_prev()<CR>"
 lvim.keys.normal_mode["]g"] = "<cmd>lua vim.diagnostic.goto_next()<CR>"
 lvim.keys.normal_mode["gh"] = "<cmd>lua vim.lsp.buf.hover()<CR>"
+lvim.keys.normal_mode["<leader>st"] = "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>"
 
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
@@ -70,7 +71,7 @@ lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Project
 -- }
 
 -- TODO: User Config for predefined plugins
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
+-- After changing plugin config exit and reopen LunarVim
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
@@ -180,10 +181,7 @@ lvim.plugins = {
   { "tpope/vim-surround" },
   { "tpope/vim-repeat" },
   { "christoomey/vim-tmux-navigator" },
-  {
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle",
-  },
+  { "nvim-telescope/telescope-live-grep-args.nvim" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
