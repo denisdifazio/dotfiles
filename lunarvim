@@ -28,7 +28,6 @@ lvim.keys.normal_mode["<C-p>"] = "<cmd>lua require('lvim.core.telescope.custom-f
 lvim.keys.normal_mode["[g"] = "<cmd>lua vim.diagnostic.goto_prev()<CR>"
 lvim.keys.normal_mode["]g"] = "<cmd>lua vim.diagnostic.goto_next()<CR>"
 lvim.keys.normal_mode["gh"] = "<cmd>lua vim.lsp.buf.hover()<CR>"
-lvim.keys.normal_mode["<leader>st"] = "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>"
 
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
@@ -60,6 +59,9 @@ lvim.keys.insert_mode["jj"] = false
 
 -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+lvim.builtin.which_key.mappings["st"] = {
+  "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", "Text"
+}
 -- lvim.builtin.which_key.mappings["t"] = {
 --   name = "+Trouble",
 --   r = { "<cmd>Trouble lsp_references<cr>", "References" },
