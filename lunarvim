@@ -17,6 +17,7 @@ vim.g.gruvbox_material_foreground = "original"
 vim.opt.showtabline = 0
 vim.opt.cmdheight = 1
 vim.opt.clipboard = "unnamedplus"
+vim.g.tmux_navigator_no_mappings = 1
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -28,6 +29,10 @@ lvim.keys.normal_mode["<C-p>"] = "<cmd>lua require('lvim.core.telescope.custom-f
 lvim.keys.normal_mode["[g"] = "<cmd>lua vim.diagnostic.goto_prev()<CR>"
 lvim.keys.normal_mode["]g"] = "<cmd>lua vim.diagnostic.goto_next()<CR>"
 lvim.keys.normal_mode["gh"] = "<cmd>lua vim.lsp.buf.hover()<CR>"
+lvim.keys.normal_mode["<C-h>"] = "<cmd>TmuxNavigateLeft<CR>"
+lvim.keys.normal_mode["<C-j>"] = "<cmd>TmuxNavigateDown<CR>"
+lvim.keys.normal_mode["<C-k>"] = "<cmd>TmuxNavigateUp<CR>"
+lvim.keys.normal_mode["<C-l>"] = "<cmd>TmuxNavigateRight<CR>"
 
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
