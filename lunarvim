@@ -197,6 +197,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
   -- enable wrap mode for json and md files only
   command = "setlocal wrap",
 })
+vim.api.nvim_create_autocmd("DirChanged", {
+  pattern = "*",
+  -- send current working directory to tmux
+  command = 'call chansend(v:stderr, printf("\\033]7;%s\\033", v:event.cwd))',
+})
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = "zsh",
 --   callback = function()
