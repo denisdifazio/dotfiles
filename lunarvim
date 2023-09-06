@@ -161,7 +161,12 @@ require("lvim.lsp.manager").setup("tsserver", {
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { command = "prettierd" },
+  { command = "markdownlint" },
+  {
+    command = "prettierd",
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "css", "scss", "less", "html",
+      "json", "jsonc", "yaml", "graphql", "handlebars" }
+  },
 }
 
 -- -- set additional linters
@@ -197,10 +202,20 @@ vim.api.nvim_create_autocmd("BufEnter", {
   -- enable wrap mode for json and md files only
   command = "setlocal wrap",
 })
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { "*.md" },
+  -- enable spell for md files
+  command = "setlocal spell spelllang=en_us",
+})
 vim.api.nvim_create_autocmd("DirChanged", {
   pattern = "*",
   -- send current working directory to tmux
   command = 'call chansend(v:stderr, printf("\\033]7;%s\\033", v:event.cwd))',
+})
+vim.api.nvim_create_autocmd("VimLeave", {
+  pattern = "*",
+  -- unset current working directory when leaving vim
+  command = 'call chansend(v:stderr, "\\033]7;\\033")',
 })
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = "zsh",
