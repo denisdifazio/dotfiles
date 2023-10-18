@@ -33,6 +33,7 @@ lvim.keys.normal_mode["<C-h>"] = "<cmd>TmuxNavigateLeft<CR>"
 lvim.keys.normal_mode["<C-j>"] = "<cmd>TmuxNavigateDown<CR>"
 lvim.keys.normal_mode["<C-k>"] = "<cmd>TmuxNavigateUp<CR>"
 lvim.keys.normal_mode["<C-l>"] = "<cmd>TmuxNavigateRight<CR>"
+lvim.keys.term_mode["<esc>"] = "<C-\\><C-n>"
 
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
@@ -63,6 +64,8 @@ lvim.keys.insert_mode["jj"] = false
 -- }
 
 -- Use which-key to add extra bindings with the leader-key prefix
+-- lvim.builtin.nvimtree.setup.renderer.icons.show.folder = false
+-- lvim.builtin.nvimtree.setup.renderer.icons.show.file = false
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["st"] = {
   "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", "Text"
