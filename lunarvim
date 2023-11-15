@@ -33,6 +33,7 @@ lvim.keys.normal_mode["<C-h>"] = "<cmd>TmuxNavigateLeft<CR>"
 lvim.keys.normal_mode["<C-j>"] = "<cmd>TmuxNavigateDown<CR>"
 lvim.keys.normal_mode["<C-k>"] = "<cmd>TmuxNavigateUp<CR>"
 lvim.keys.normal_mode["<C-l>"] = "<cmd>TmuxNavigateRight<CR>"
+lvim.keys.insert_mode["<C-c>"] = "<esc>"
 lvim.keys.term_mode["<esc>"] = "<C-\\><C-n>"
 
 -- unmap a default keymapping
@@ -112,6 +113,10 @@ lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
 -- generic LSP settings
+-- vim.diagnostic.config({
+--   update_in_insert = true
+-- })
+
 
 -- -- make sure server will always be installed even if the server is in skipped_servers list
 -- lvim.lsp.installer.setup.ensure_installed = {
@@ -182,11 +187,6 @@ linters.setup {
     ---@usage arguments to pass to the formatter
     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
     extra_args = { "--severity", "warning" },
-  },
-  {
-    command = "codespell",
-    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "javascript", "python" },
   },
 }
 
