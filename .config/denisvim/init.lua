@@ -30,6 +30,7 @@ require("lazy").setup({
 	require("plugins.neo-tree"),
 	require("plugins.tmux"),
 	require("plugins.treesitter"),
+	require("plugins.treesitter-context"),
 	require("plugins.telescope"),
 	require("plugins.lsp"),
 	require("plugins.autocompletion"),
@@ -39,4 +40,6 @@ require("lazy").setup({
 	require("plugins.autopairs"),
 	require("plugins.surround"),
 	require("plugins.statusline"),
+	require("plugins.gitsigns"),
+	require("plugins.todo-comments"),
 })

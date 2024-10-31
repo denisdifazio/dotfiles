@@ -1,3 +1,17 @@
+local action = setmetatable({}, {
+	__index = function(_, action)
+		return function()
+			vim.lsp.buf.code_action({
+				apply = true,
+				context = {
+					only = { action },
+					diagnostics = {},
+				},
+			})
+		end
+	end,
+})
+
 return {
 	-- Main LSP Configuration
 	"neovim/nvim-lspconfig",
@@ -84,11 +98,13 @@ return {
 
 				-- Rename the variable under your cursor.
 				--  Most Language Servers support renaming across files, etc.
-				map("<leader>cr", vim.lsp.buf.rename, "[R]ename")
+				map("<leader>cr", vim.lsp.buf.rename, "Rename")
 
 				-- Execute a code action, usually your cursor needs to be on top of an error
 				-- or a suggestion from your LSP for this to activate.
-				map("<leader>ca", vim.lsp.buf.code_action, "[A]ction", { "n", "x" })
+				map("<leader>ca", vim.lsp.buf.code_action, "Code Action", { "n", "x" })
+
+				map("<leader>co", action["source.organizeImports"], "Organize Imports")
 
 				-- WARN: This is not Goto Definition, this is Goto Declaration.
 				--  For example, in C this would take you to the header.
@@ -158,6 +174,12 @@ return {
 			-- But for many setups, the LSP (`ts_ls`) will work just fine
 			dockerls = {},
 			ts_ls = {},
+			eslint = {
+				settings = {
+					-- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
+					workingDirectories = { mode = "auto" },
+				},
+			},
 			jsonls = {},
 			yamlls = {},
 			lua_ls = {

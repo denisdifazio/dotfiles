@@ -16,3 +16,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+-- Delete all marks on leave
+vim.api.nvim_create_autocmd("VimLeavePre", {
+	pattern = "*",
+	command = "delmarks A-Z0-9",
+})
