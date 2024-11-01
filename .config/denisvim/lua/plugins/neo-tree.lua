@@ -14,6 +14,7 @@ return {
 			{ noremap = true, silent = true, desc = "Toggle Neotree" }
 		)
 		require("neo-tree").setup({
+			enable_git_status = true,
 			filesystem = {
 				filtered_items = {
 					hide_dotfiles = false,

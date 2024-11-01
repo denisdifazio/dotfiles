@@ -11,6 +11,7 @@ return {
 				{ "<leader>f", group = "file/find" },
 				{ "<leader>s", group = "search" },
 				{ "<leader>u", group = "ui" },
+				{ "<leader>g", group = "git" },
 				{ "[", group = "prev" },
 				{ "]", group = "next" },
 				{ "g", group = "goto" },
